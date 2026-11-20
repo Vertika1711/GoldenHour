@@ -17,6 +17,34 @@
 
   <main id="main" class="page-impact container">
     <!-- Owner: Member A -->
+    <header class="impact-head">
+      <h1>Your impact</h1>
+      <p class="lead">Every pickup keeps good food out of the bin. These numbers add up the food you rescued, the CO₂ you helped avoid and the money you saved.</p>
+    </header>
+
+    <!-- Filled by pages/impact.js. The skeleton shows only while loading. -->
+    <div id="impact-content">
+      <div class="impact-loading" aria-hidden="true">
+        <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+      </div>
+      <p class="sr-only" role="status">Loading your impact…</p>
+    </div>
+
+    <section class="impact-reset" aria-labelledby="reset-title">
+      <h2 id="reset-title">Demo data</h2>
+      <p class="muted">This site runs on sample data. Reset it to start again with fresh listings and an empty impact history.</p>
+      <button class="btn btn-danger" type="button" id="reset-btn" aria-expanded="false" aria-controls="reset-confirm">Reset demo data</button>
+
+      <div class="notice notice-error reset-confirm" id="reset-confirm" role="group" aria-labelledby="reset-confirm-text" hidden>
+        <p id="reset-confirm-text"><strong>Reset all demo data?</strong> This clears your orders, impact history, bag, sign-in and any food you listed, then creates fresh listings. It can't be undone.</p>
+        <div class="reset-actions">
+          <button class="btn btn-danger" type="button" id="reset-yes">Yes, reset</button>
+          <button class="btn btn-ghost" type="button" id="reset-cancel">Cancel</button>
+        </div>
+      </div>
+
+      <p class="notice notice-success reset-done" id="reset-done" role="status" hidden>Demo data reset. Your impact history is now empty.</p>
+    </section>
   </main>
 
   <div id="app-footer"></div>
