@@ -1,2 +1,405 @@
-/* index.html page styles. Owner: Member B.
-   Scope every rule under main.page-browse so it never affects other pages. */
+/* Golden Hour: Home and Browse styles. Owner: Member B.
+   Everything is scoped under main.page-browse so no other page is affected. */
+
+main.page-browse .hero {
+  background: var(--beet, #6B1F45);
+  color: #fff;
+  padding: 40px 16px 32px;
+}
+
+main.page-browse .hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main.page-browse .hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.9rem, 6vw, 3.25rem);
+  line-height: 1.1;
+  margin: 0 0 12px;
+  max-width: 18ch;
+}
+
+main.page-browse .hero-sub {
+  font-size: 1.05rem;
+  max-width: 52ch;
+  margin: 0 0 24px;
+  opacity: 0.92;
+}
+
+main.page-browse .hero-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+main.page-browse .hero-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 200px;
+  max-width: 320px;
+}
+
+main.page-browse .hero-field label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+main.page-browse .hero-controls .input,
+main.page-browse .hero-controls .btn {
+  min-height: 44px;
+}
+
+main.page-browse .hero-controls .btn {
+  flex: 0 0 auto;
+  background: var(--turmeric, #F4B400);
+  color: var(--ink, #22141B);
+  border-color: transparent;
+}
+
+main.page-browse .loc-msg {
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  max-width: 60ch;
+}
+
+main.page-browse .loc-msg.is-error {
+  background: #fff;
+  color: var(--tomato, #D6452B);
+  font-weight: 600;
+}
+
+main.page-browse .live-summary {
+  margin: 20px 0 0;
+  font-size: 1.05rem;
+}
+
+main.page-browse .live-summary [data-countdown] {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--turmeric, #F4B400);
+}
+
+/* ---- closing soon row ---- */
+
+main.page-browse .closing-soon {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 16px 0;
+}
+
+main.page-browse .closing-soon[hidden] { display: none; }
+
+main.page-browse .closing-soon h2 {
+  font-family: 'Fraunces', serif;
+  margin: 0 0 12px;
+}
+
+main.page-browse .closing-row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 12px;
+}
+
+main.page-browse .closing-item {
+  flex: 0 0 min(280px, 80%);
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+/* ---- filters ---- */
+
+main.page-browse .filters {
+  display: grid;
+  gap: 16px;
+  margin: 0 0 24px;
+}
+
+main.page-browse .chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+main.page-browse .chip-row .chip {
+  min-height: 44px;
+  cursor: pointer;
+}
+
+main.page-browse .chip-row .chip[aria-pressed="true"] {
+  background: var(--beet, #6B1F45);
+  border-color: var(--beet, #6B1F45);
+  color: #fff;
+}
+
+main.page-browse .filter-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: end;
+}
+
+main.page-browse .filters .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+main.page-browse .filters .field label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+main.page-browse .filters .input {
+  min-height: 44px;
+  width: 100%;
+}
+
+main.page-browse .filters input[type="range"] {
+  width: 100%;
+  min-height: 44px;
+  accent-color: var(--beet, #6B1F45);
+}
+
+main.page-browse .veg-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+main.page-browse .veg-toggle input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--mint, #12946A);
+}
+
+main.page-browse .filter-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+main.page-browse .result-count {
+  margin: 0;
+  font-weight: 600;
+}
+
+main.page-browse .filter-status .btn { min-height: 44px; }
+
+@media (min-width: 700px) {
+  main.page-browse .filter-controls {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+  }
+}
+
+/* ---- listing grid ---- */
+
+main.page-browse .browse-results {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+
+main.page-browse .browse-results h2 {
+  font-family: 'Fraunces', serif;
+  margin: 0 0 16px;
+}
+
+main.page-browse .listing-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 600px) {
+  main.page-browse .listing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 900px) {
+  main.page-browse .listing-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1200px) {
+  main.page-browse .listing-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+main.page-browse .empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 16px;
+}
+
+main.page-browse .empty-state h3 {
+  font-family: 'Fraunces', serif;
+  margin: 0 0 8px;
+}
+
+main.page-browse .empty-state p {
+  margin: 0 auto 16px;
+  max-width: 48ch;
+}
+
+main.page-browse .empty-state .btn { min-height: 44px; }
+
+/* ---- filters button + drawer (phones, below 700px) ---- */
+
+main.page-browse .open-filters {
+  display: none;
+  min-height: 44px;
+  margin: 0 0 16px;
+  align-items: center;
+  gap: 8px;
+}
+
+main.page-browse .filter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: var(--turmeric, #F4B400);
+  color: var(--ink, #22141B);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+main.page-browse .filter-badge[hidden],
+main.page-browse .filter-backdrop[hidden] { display: none; }
+
+main.page-browse .drawer-head,
+main.page-browse .drawer-foot { display: none; }
+
+@media (max-width: 699px) {
+  main.page-browse .open-filters { display: inline-flex; }
+
+  /* Re-state the layout here so the shared .drawer rules can't hide or move the sheet. */
+  main.page-browse .filters.is-sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    z-index: 1000;
+    max-height: 85vh;
+    overflow-y: auto;
+    margin: 0;
+    padding: 16px 16px 0;
+    border-radius: 16px 16px 0 0;
+    background: var(--bg, #fff);
+    color: var(--ink, #22141B);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.25);
+    width: auto;
+    transform: translateY(100%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+
+  main.page-browse .filters.is-sheet.is-open {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.25s ease;
+  }
+
+  main.page-browse .filters.is-sheet .drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  main.page-browse .drawer-head h3 {
+    font-family: 'Fraunces', serif;
+    margin: 0;
+  }
+
+  main.page-browse .drawer-head .btn,
+  main.page-browse .drawer-foot .btn { min-height: 44px; }
+
+  main.page-browse .filters.is-sheet .drawer-foot {
+    display: block;
+    position: sticky;
+    bottom: 0;
+    margin: 0 -16px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: var(--bg, #fff);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  main.page-browse .drawer-foot .btn { width: 100%; }
+
+  main.page-browse .filter-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(34, 20, 27, 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main.page-browse .filters.is-sheet,
+  main.page-browse .filters.is-sheet.is-open { transition: none; }
+  main.page-browse .closing-row { scroll-behavior: auto; }
+}
+
+/* ---- how it works ---- */
+
+main.page-browse .how {
+  background: var(--mint-soft, rgba(18, 148, 106, 0.1));
+  padding: 40px 16px 48px;
+}
+
+main.page-browse .how-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main.page-browse .how h2 {
+  font-family: 'Fraunces', serif;
+  margin: 0 0 24px;
+}
+
+main.page-browse .how-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  counter-reset: none;
+}
+
+main.page-browse .how-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--beet, #6B1F45);
+  color: #fff;
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+main.page-browse .how-steps h3 { margin: 12px 0 6px; }
+main.page-browse .how-steps p { margin: 0; max-width: 40ch; }
+
+@media (min-width: 700px) {
+  main.page-browse .how-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
