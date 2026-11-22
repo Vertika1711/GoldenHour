@@ -16,7 +16,78 @@
   <div id="app-header"></div>
 
   <main id="main" class="page-orders container">
-    <!-- Owner: Member D -->
+    <header class="orders-page-heading">
+      <p class="orders-eyebrow">Your food rescue journey</p>
+      <h1>My orders</h1>
+      <p class="lead">Keep your pickup codes and times close at hand.</p>
+    </header>
+
+    <div class="orders-tabs" role="tablist" aria-label="Your orders">
+      <button class="orders-tab is-selected" id="orders-tab-active" type="button" role="tab" aria-selected="true" aria-controls="orders-panel-active" tabindex="0" data-orders-tab="active">
+        Active <span class="orders-tab-count" id="orders-active-count">0</span>
+      </button>
+      <button class="orders-tab" id="orders-tab-past" type="button" role="tab" aria-selected="false" aria-controls="orders-panel-past" tabindex="-1" data-orders-tab="past">
+        Past <span class="orders-tab-count" id="orders-past-count">0</span>
+      </button>
+    </div>
+
+    <section class="orders-panel" id="orders-panel-active" role="tabpanel" aria-labelledby="orders-tab-active" tabindex="0">
+      <div class="orders-list" id="orders-active-list" aria-live="polite"></div>
+      <div class="empty-state orders-empty-state" id="orders-active-empty" hidden>
+        <svg viewBox="0 0 120 80" aria-hidden="true" focusable="false"><ellipse cx="60" cy="57" rx="48" ry="13" fill="var(--primary-soft)"/><path d="M34 52a26 26 0 0 1 52 0z" fill="var(--turmeric)"/><ellipse cx="60" cy="56" rx="34" ry="8" fill="var(--beet)" opacity=".82"/></svg>
+        <h2>No active reservations</h2>
+        <p>Your next pickup will appear here after you reserve something delicious.</p>
+        <a class="btn btn-primary" href="index.html">Browse food</a>
+      </div>
+    </section>
+
+    <section class="orders-panel" id="orders-panel-past" role="tabpanel" aria-labelledby="orders-tab-past" tabindex="0" hidden>
+      <div class="orders-list" id="orders-past-list" aria-live="polite" hidden></div>
+      <div class="empty-state orders-empty-state" id="orders-past-empty" hidden>
+        <svg viewBox="0 0 120 80" aria-hidden="true" focusable="false"><circle cx="60" cy="40" r="31" fill="var(--highlight-soft)"/><path d="M44 41h32m-12-12 12 12-12 12" fill="none" stroke="var(--beet)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h2>No past orders yet</h2>
+        <p>Picked-up and completed reservations will be kept here.</p>
+        <a class="btn btn-primary" href="index.html">Browse food</a>
+      </div>
+    </section>
+
+    <template id="order-card-template">
+      <article class="order-card card">
+        <header class="order-card-header">
+          <div class="order-store">
+            <span class="badge" data-order-status></span>
+            <h2 data-store-name></h2>
+            <p data-store-address></p>
+          </div>
+          <div class="order-code" data-order-code-wrap>
+            <span>Pickup code</span>
+            <strong data-order-code></strong>
+          </div>
+        </header>
+        <ul class="order-items" data-order-items></ul>
+        <dl class="order-details">
+          <div><dt>Pickup window</dt><dd data-order-window></dd></div>
+          <div class="order-countdown-row"><dt>Pickup closes in</dt><dd><span data-order-countdown></span></dd></div>
+          <div class="order-placed-row"><dt>Placed</dt><dd data-order-placed></dd></div>
+          <div class="order-total-row"><dt>Order total</dt><dd data-order-total></dd></div>
+        </dl>
+        <div class="order-impact" data-order-impact hidden>
+          <p data-order-impact-message></p>
+          <a href="impact.html">See your impact</a>
+        </div>
+        <div class="order-actions" data-order-actions hidden>
+          <button class="btn btn-primary" type="button" data-order-action="request-pickup">Mark as Picked Up</button>
+          <button class="btn btn-ghost" type="button" data-order-action="request-cancel">Cancel Reservation</button>
+        </div>
+        <div class="order-action-confirm" data-order-confirm hidden role="group" aria-label="Confirm order action" aria-live="polite">
+          <p data-order-confirm-copy></p>
+          <div class="order-confirm-buttons">
+            <button class="btn btn-primary" type="button" data-order-action="confirm">Confirm</button>
+            <button class="btn btn-ghost" type="button" data-order-action="dismiss">Go back</button>
+          </div>
+        </div>
+      </article>
+    </template>
   </main>
 
   <div id="app-footer"></div>

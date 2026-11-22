@@ -16,7 +16,194 @@
   <div id="app-header"></div>
 
   <main id="main" class="page-cart container">
-    <!-- Owner: Member D -->
+    <header class="cart-page-heading">
+      <p class="cart-eyebrow">A little less waste, a little more joy</p>
+      <h1>Your bag</h1>
+      <p class="lead">Your picks are held for 10 minutes from the moment you add the first item.</p>
+    </header>
+
+    <div class="cart-hold-banner" id="cart-hold-banner" aria-live="polite">
+      <span class="cart-hold-icon" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="17" r="11" stroke="currentColor" stroke-width="2.5"/><path d="M16 10v7l4 2M12 3h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </span>
+      <div class="cart-hold-copy">
+        <p class="cart-hold-title">Your reservation hold</p>
+        <p class="cart-hold-message">Your bag is held for 10 minutes from the moment you add the first item.</p>
+        <p class="cart-hold-warning" id="cart-hold-warning" hidden>Less than 2 minutes left. Complete checkout soon.</p>
+        <p class="cart-hold-expired" id="cart-hold-expired" hidden>Your hold expired and your bag was emptied. <a href="index.html">Browse food</a></p>
+      </div>
+      <span class="cart-hold-timer" id="cart-hold-timer" aria-label="Time remaining">--:--</span>
+    </div>
+
+    <div class="cart-layout" id="cart-layout">
+      <section class="cart-bag-column" aria-label="Items in your bag">
+        <div class="cart-removed-notice notice notice-info" id="cart-removed-notice" role="status" hidden>
+          <strong>Some items are no longer available.</strong>
+          <span id="cart-removed-items"></span>
+        </div>
+
+        <div class="cart-store-list" id="cart-items" aria-live="polite"></div>
+
+        <section class="cart-empty-state card" id="cart-empty-state" aria-labelledby="cart-empty-title">
+          <div class="cart-empty-art" aria-hidden="true">
+            <svg viewBox="0 0 180 142" fill="none">
+              <circle cx="90" cy="69" r="56" fill="var(--highlight-soft)"/>
+              <path d="M48 83h84c-3 25-18 38-42 38S51 108 48 83Z" fill="var(--beet)"/>
+              <path d="M56 81c0-13 15-24 34-24s34 11 34 24H56Z" fill="var(--turmeric)"/>
+              <path d="M65 73c4-8 12-12 19-11m22 8c4-5 9-7 14-6" stroke="var(--mint)" stroke-width="5" stroke-linecap="round"/>
+              <path d="M41 123h98" stroke="var(--beet)" stroke-width="4" stroke-linecap="round" opacity=".22"/>
+              <path d="M47 37l5 7m79-2 6-7M88 21v9" stroke="var(--tomato)" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="cart-empty-kicker">Room for something good</p>
+          <h2 id="cart-empty-title">Your bag is waiting</h2>
+          <p>Find a nearby favourite and give good food a second chance.</p>
+          <a class="btn btn-primary" href="index.html">Browse food</a>
+        </section>
+      </section>
+
+      <aside class="cart-sidebar" aria-label="Order summary and checkout">
+        <section class="cart-summary card" aria-labelledby="cart-summary-title">
+          <h2 id="cart-summary-title">Order summary</h2>
+          <dl class="cart-summary-lines">
+            <div><dt>Subtotal</dt><dd id="cart-subtotal">—</dd></div>
+            <div><dt>Total savings</dt><dd class="cart-savings" id="cart-savings">—</dd></div>
+            <div><dt>Food rescued</dt><dd id="cart-food-weight">— <span>kg</span></dd></div>
+          </dl>
+          <div class="cart-summary-total">
+            <span>Total</span>
+            <strong id="cart-total">—</strong>
+          </div>
+          <button class="btn btn-primary btn-block cart-checkout-button" id="cart-continue" type="button">
+            Continue to checkout
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="cart-summary-note">No payment is taken until you reserve.</p>
+        </section>
+
+        <section class="cart-checkout-placeholder card" id="cart-checkout" aria-labelledby="cart-checkout-title" hidden>
+          <span class="cart-checkout-step">Next step</span>
+          <h2 id="cart-checkout-title">Checkout</h2>
+          <p class="cart-checkout-intro">Add your details and choose how you would like to pay.</p>
+          <p class="cart-signin-prompt">Already have an account? <a href="login.html?next=cart.html">Sign in to fill this in</a>.</p>
+
+          <form id="checkout-form" class="cart-checkout-form" novalidate>
+            <div class="field">
+              <label class="label" for="checkout-name">Name</label>
+              <input class="input" id="checkout-name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="checkout-name-error">
+              <p class="field-error" id="checkout-name-error" hidden></p>
+            </div>
+
+            <div class="field">
+              <label class="label" for="checkout-phone">Phone number</label>
+              <input class="input" id="checkout-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="16" placeholder="10-digit mobile number" required aria-describedby="checkout-phone-hint checkout-phone-error">
+              <p class="field-hint" id="checkout-phone-hint">Use a 10-digit Indian mobile number. A +91 prefix is also accepted.</p>
+              <p class="field-error" id="checkout-phone-error" hidden></p>
+            </div>
+
+            <fieldset class="cart-payment-options">
+              <legend class="label">Payment choice</legend>
+              <label class="chip cart-payment-option">
+                <input type="radio" name="payment" value="pay-at-pickup" checked>
+                <span>Pay at pickup (UPI or cash)</span>
+              </label>
+              <label class="chip cart-payment-option">
+                <input type="radio" name="payment" value="upi-demo">
+                <span>Pay now with UPI (demo)</span>
+              </label>
+            </fieldset>
+
+            <div class="field cart-upi-field" id="cart-upi-field" hidden>
+              <label class="label" for="checkout-upi">UPI ID</label>
+              <input class="input" id="checkout-upi" name="upiId" type="text" inputmode="email" autocomplete="off" autocapitalize="none" placeholder="name@okbank" aria-describedby="checkout-upi-hint checkout-upi-error">
+              <p class="field-hint" id="checkout-upi-hint">Demo only. No payment will be sent or collected.</p>
+              <p class="field-error" id="checkout-upi-error" hidden></p>
+            </div>
+
+            <div class="cart-pickup-acknowledgement">
+              <label for="checkout-pickup-ack">
+                <input id="checkout-pickup-ack" name="pickupAcknowledged" type="checkbox" required aria-describedby="checkout-pickup-error">
+                <span>I'll pick up before the pickup window closes.</span>
+              </label>
+              <p class="field-error" id="checkout-pickup-error" hidden></p>
+            </div>
+
+            <p class="notice notice-error cart-checkout-error" id="checkout-form-error" role="alert" hidden></p>
+            <p class="notice notice-success cart-checkout-result" id="checkout-result" role="status" aria-live="polite" hidden></p>
+
+            <button class="btn btn-primary btn-block cart-submit-button" id="checkout-submit" type="submit">Continue to reservation</button>
+          </form>
+        </section>
+      </aside>
+    </div>
+
+    <section class="cart-confirmation card" id="cart-confirmation" aria-labelledby="cart-confirmation-title" aria-live="polite" hidden>
+      <div class="cart-confirmation-heading">
+        <span class="cart-confirmation-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="21" fill="currentColor" opacity=".14"/><path d="m14 24 7 7 14-15" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <p class="cart-confirmation-eyebrow">You're all set</p>
+          <h2 id="cart-confirmation-title">Reservation confirmed</h2>
+          <p>Show the pickup code for each shop when you collect your food.</p>
+        </div>
+      </div>
+      <div class="cart-confirmation-orders" id="cart-confirmation-orders"></div>
+      <a class="btn btn-primary cart-orders-link" href="orders.html">View My Orders</a>
+    </section>
+
+    <template id="cart-store-template">
+      <article class="cart-store card">
+        <header class="cart-store-heading">
+          <div>
+            <h2 data-store-name></h2>
+            <p class="cart-store-meta"><span data-store-distance></span><span class="cart-meta-dot" aria-hidden="true">·</span><span data-pickup-window></span></p>
+          </div>
+        </header>
+        <div class="cart-store-items" data-store-items></div>
+      </article>
+    </template>
+
+    <template id="cart-item-template">
+      <article class="cart-item" data-cart-item>
+        <div class="cart-item-art" aria-hidden="true">
+          <svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="34" fill="var(--highlight-soft)"/><path d="M15 39h42c-2 13-9 20-21 20S17 52 15 39Z" fill="var(--beet)"/><path d="M20 38c0-7 7-13 16-13s16 6 16 13H20Z" fill="var(--turmeric)"/><path d="M28 32c2-4 6-6 10-5m5 6 4-2" stroke="var(--mint)" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="cart-item-info">
+          <h3 data-item-name></h3>
+          <p class="cart-item-price" data-item-price></p>
+        </div>
+        <div class="cart-item-controls">
+          <div class="cart-quantity" role="group" aria-label="Quantity">
+            <button class="cart-quantity-button" type="button" data-qty-decrease aria-label="Decrease quantity">−</button>
+            <span class="cart-quantity-value" data-qty-value>1</span>
+            <button class="cart-quantity-button" type="button" data-qty-increase aria-label="Increase quantity">+</button>
+          </div>
+          <button class="cart-remove-button" type="button" data-remove-item>Remove</button>
+        </div>
+      </article>
+    </template>
+
+    <template id="cart-confirmation-order-template">
+      <article class="cart-confirmation-order">
+        <header class="cart-confirmation-store">
+          <div class="cart-confirmation-store-copy">
+            <h3 data-confirm-store-name></h3>
+            <p data-confirm-store-address></p>
+          </div>
+          <div class="cart-pickup-code">
+            <span>Pickup code</span>
+            <strong data-confirm-code></strong>
+          </div>
+        </header>
+        <ul class="cart-confirmation-items" data-confirm-items></ul>
+        <dl class="cart-confirmation-details">
+          <div><dt>Pickup window</dt><dd data-confirm-window></dd></div>
+          <div><dt>Pickup closes in</dt><dd><span data-confirm-countdown></span></dd></div>
+          <div class="cart-confirm-total"><dt>Order total</dt><dd data-confirm-total></dd></div>
+        </dl>
+      </article>
+    </template>
   </main>
 
   <div id="app-footer"></div>
