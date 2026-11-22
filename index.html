@@ -134,6 +134,14 @@
 
   <script src="shared/data.js"></script>
   <script src="shared/store.js"></script>
+  <script>
+    document.documentElement.style.visibility = 'hidden';
+    if (!window.Store || !window.Store.getUser()) {
+      window.location.replace('login.html?next=index.html');
+    } else {
+      document.documentElement.style.visibility = 'visible';
+    }
+  </script>
   <script src="shared/layout.js"></script>
   <script src="pages/index.js"></script>
 </body>
