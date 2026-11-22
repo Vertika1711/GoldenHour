@@ -1,23 +1,134 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Golden Hour · Surplus food near you, before it's gone</title>
-  <meta name="description" content="Reserve surplus food from bakeries, kitchens, grocers and sweet shops near you, at a discount, before it's gone.">
+  <meta name="description"
+    content="Reserve surplus food from bakeries, kitchens, grocers and sweet shops near you, at a discount, before it's gone.">
   <meta name="theme-color" content="#6B1F45">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="shared/style.css">
   <link rel="stylesheet" href="pages/index.css">
 </head>
+
 <body>
   <div id="app-header"></div>
 
-  <main id="main" class="page-browse container">
-    <!-- Owner: Member B -->
-  </main>
+ <!-- Paste this INSIDE index.html, replacing everything between <main class="page-browse"> and </main>.
+     Do not touch anything outside <main>. -->
+<!-- Paste this INSIDE index.html, replacing everything between <main class="page-browse"> and </main>.
+     Do not touch anything outside <main>. -->
+<main class="page-browse">
+  <!-- Owner: Member B -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Surplus food near you, before it's gone</h1>
+      <p class="hero-sub">Shops list unsold food at a discount in their last hours. Reserve it here and pick it up before they close.</p>
+
+      <div class="hero-controls">
+        <div class="hero-field">
+          <label for="area-select">Your area</label>
+          <select id="area-select" class="input"></select>
+        </div>
+        <button id="use-location" class="btn" type="button">Use my location</button>
+      </div>
+
+      <p id="loc-msg" class="loc-msg" role="status" aria-live="polite" hidden></p>
+      <p id="live-summary" class="live-summary" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="closing-soon" class="closing-soon" aria-labelledby="closing-heading" hidden>
+    <h2 id="closing-heading">Closing soon</h2>
+    <div id="closing-row" class="closing-row" role="region" aria-label="Listings closing within the hour" tabindex="0"></div>
+  </section>
+
+  <section class="browse-results" aria-labelledby="results-heading">
+    <h2 id="results-heading">Available near you</h2>
+
+    <button id="open-filters" class="btn open-filters" type="button" aria-expanded="false" aria-controls="filters">
+      Filters <span id="filter-badge" class="filter-badge" hidden></span>
+    </button>
+    <div id="filter-backdrop" class="filter-backdrop" hidden></div>
+
+    <form id="filters" class="filters" aria-label="Filter listings" onsubmit="return false">
+      <div class="drawer-head">
+        <h3 id="filters-title">Filters</h3>
+        <button id="close-filters" class="btn btn-ghost" type="button" aria-label="Close filters">Close</button>
+      </div>
+
+      <div id="chip-row" class="chip-row" role="group" aria-label="Category"></div>
+
+      <div class="filter-controls">
+        <div class="field field-search">
+          <label for="search">Search</label>
+          <input id="search" class="input" type="search" placeholder="Item or store name" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="sort">Sort by</label>
+          <select id="sort" class="input">
+            <option value="ending">Ending soon</option>
+            <option value="nearest">Nearest</option>
+            <option value="freshest">Freshest</option>
+            <option value="discount">Biggest discount</option>
+            <option value="price">Lowest price</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="dist">Within <output id="dist-out" for="dist">10 km</output></label>
+          <input id="dist" class="range" type="range" min="1" max="10" step="1" value="10">
+        </div>
+
+        <label class="veg-toggle" for="veg-only">
+          <input id="veg-only" type="checkbox">
+          <span>Veg only</span>
+        </label>
+      </div>
+
+      <div class="filter-status">
+        <p id="result-count" class="result-count" role="status" aria-live="polite"></p>
+        <button class="btn btn-ghost" type="button" data-action="clear-filters">Clear filters</button>
+      </div>
+
+      <div class="drawer-foot">
+        <button id="apply-filters" class="btn btn-primary" type="button">Apply <span id="drawer-count"></span></button>
+      </div>
+    </form>
+
+    <div id="listing-grid" class="listing-grid"></div>
+  </section>
+
+  <section class="how" aria-labelledby="how-heading">
+    <div class="how-inner">
+      <h2 id="how-heading">How it works</h2>
+      <ol class="how-steps">
+        <li>
+          <span class="how-num" aria-hidden="true">1</span>
+          <h3>Reserve before the window closes</h3>
+          <p>Pick what you like and reserve it before the pickup window ends. Your bag is held for 10 minutes.</p>
+        </li>
+        <li>
+          <span class="how-num" aria-hidden="true">2</span>
+          <h3>Pick up with your code</h3>
+          <p>Show your 4-character code at the shop during the pickup window and collect your food.</p>
+        </li>
+        <li>
+          <span class="how-num" aria-hidden="true">3</span>
+          <h3>See the food you've rescued</h3>
+          <p>Watch your kilograms rescued, CO2 avoided and money saved add up on your impact page.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+</main>
 
   <div id="app-footer"></div>
 
@@ -26,4 +137,5 @@
   <script src="shared/layout.js"></script>
   <script src="pages/index.js"></script>
 </body>
+
 </html>
