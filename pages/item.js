@@ -54,8 +54,8 @@
       if (i === stops.length - 1 && now > listing.goodTill) state = ' is-past';
       html += '<li class="timeline-stop' + state + '" style="--stop-position:' + position.toFixed(2) + '%">' +
         '<span class="timeline-dot" aria-hidden="true"></span>' +
-        '<div><strong>' + UI.esc(stop.key) + '</strong>' +
-        '<span class="timeline-time">' + UI.esc(UI.time(stop.time)) + '</span>' +
+        '<div><div class="timeline-stop-heading"><strong>' + UI.esc(stop.key) + '</strong>' +
+        '<span class="timeline-time">' + UI.esc(UI.time(stop.time)) + '</span></div>' +
         '<span class="timeline-detail">' + stop.detail + '</span></div>' +
       '</li>';
     }
@@ -161,11 +161,6 @@
     var add = root.querySelector('#item-add');
     if (add) {
       add.addEventListener('click', function () {
-        if (!Store.getUser()) {
-          UI.toast('Sign in before reserving this item');
-          window.location.href = 'login.html?next=' + encodeURIComponent('item.html?id=' + listing.id);
-          return;
-        }
         var result = Store.addToCart(listing.id, quantity);
         UI.toast(result.msg);
         render();

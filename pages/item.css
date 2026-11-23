@@ -22,6 +22,7 @@ main.page-item .item-breadcrumb a { font-weight: 700; }
 main.page-item .item-detail {
   display: grid;
   gap: var(--space-5);
+  min-width: 0;
 }
 
 main.page-item .item-hero {
@@ -149,6 +150,9 @@ main.page-item .quantity-stepper output {
 main.page-item .item-add { width: 100%; }
 
 main.page-item .item-freshness {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-width: 0;
   padding: var(--space-5);
 }
 
@@ -164,8 +168,10 @@ main.page-item .freshness-heading h2 { margin: 0; }
 
 main.page-item .timeline-wrap {
   position: relative;
+  width: 100%;
+  min-width: 0;
   margin: var(--space-4) 0 var(--space-6);
-  padding: 0 0 0 28px;
+  padding: 0 0 0 60px;
 }
 
 main.page-item .timeline-wrap::before {
@@ -173,7 +179,7 @@ main.page-item .timeline-wrap::before {
   position: absolute;
   top: 8px;
   bottom: 8px;
-  left: 8px;
+  left: 16px;
   width: 3px;
   border-radius: var(--radius-pill);
   background: var(--border);
@@ -182,6 +188,7 @@ main.page-item .timeline-wrap::before {
 main.page-item .freshness-timeline {
   display: grid;
   gap: var(--space-4);
+  min-width: 0;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -189,22 +196,26 @@ main.page-item .freshness-timeline {
 
 main.page-item .timeline-stop {
   position: relative;
-  display: grid;
-  grid-template-columns: 44px minmax(0, 1fr);
-  align-items: start;
+  min-width: 0;
 }
 
 main.page-item .timeline-stop > div {
-  display: grid;
-  grid-template-columns: minmax(110px, 1fr) auto;
+  min-width: 0;
+}
+
+main.page-item .timeline-stop-heading {
+  display: flex;
   align-items: baseline;
   gap: var(--space-2);
   min-width: 0;
 }
 
+main.page-item .timeline-stop-heading strong,
+main.page-item .timeline-time { white-space: nowrap; }
+
 main.page-item .timeline-dot {
   position: absolute;
-  left: -28px;
+  left: -52px;
   top: 3px;
   width: 17px;
   height: 17px;
@@ -217,26 +228,24 @@ main.page-item .timeline-dot {
 main.page-item .timeline-stop.is-past .timeline-dot { background: var(--mint); }
 
 main.page-item .timeline-time {
-  grid-column: 1;
   color: var(--text);
   font-weight: 700;
 }
 
 main.page-item .timeline-detail {
-  grid-column: 2;
-  grid-row: 1 / span 2;
+  display: block;
+  margin-top: 2px;
   color: var(--text-muted);
-  text-align: right;
   font-size: var(--fs-sm);
 }
 
 main.page-item .timeline-now {
   position: absolute;
-  left: 7px;
+  left: 16px;
   z-index: 2;
   width: 19px;
   height: 19px;
-  margin-left: -1.5px;
+  margin-left: -9.5px;
   margin-top: -5px;
   border: 3px solid var(--surface);
   border-radius: 50%;
@@ -246,10 +255,15 @@ main.page-item .timeline-now {
 
 main.page-item .timeline-now span {
   position: absolute;
-  left: 20px;
+  left: 13px;
   top: -3px;
+  padding: 0 3px;
+  border-radius: 4px;
+  background: var(--surface);
   font-size: var(--fs-xs);
   font-weight: 800;
+  line-height: 1.4;
+  white-space: nowrap;
 }
 
 main.page-item .item-freshbar {
@@ -333,8 +347,6 @@ main.page-item .item-missing-mark {
   main.page-item .item-illustration { min-height: 220px; }
   main.page-item .freshness-heading { align-items: center; }
   main.page-item .freshness-heading h2 { font-size: var(--fs-xl); }
-  main.page-item .timeline-stop > div { grid-template-columns: 1fr; }
-  main.page-item .timeline-detail { grid-column: 1; grid-row: auto; text-align: left; }
   main.page-item .item-freshness,
   main.page-item .item-details { padding: var(--space-4); }
 }

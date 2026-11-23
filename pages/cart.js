@@ -20,6 +20,7 @@
   var holdExpired = document.getElementById('cart-hold-expired');
   var checkoutSection = document.getElementById('cart-checkout');
   var checkoutForm = document.getElementById('checkout-form');
+  var signInPrompt = document.getElementById('cart-signin-prompt');
   var nameInput = document.getElementById('checkout-name');
   var phoneInput = document.getElementById('checkout-phone');
   var upiInput = document.getElementById('checkout-upi');
@@ -220,6 +221,10 @@
 
   function placeReservation(payment) {
     if (isPlacingOrder || placedOrders) return;
+    if (!Store.getUser()) {
+      window.location.href = 'login.html?next=cart.html';
+      return;
+    }
 
     var cart = Store.getCart();
     if (!isCheckoutAvailable(cart)) {
@@ -272,6 +277,10 @@
   function handleCheckoutSubmit(event) {
     event.preventDefault();
     if (isSubmitting || checkoutDone) return;
+    if (!Store.getUser()) {
+      window.location.href = 'login.html?next=cart.html';
+      return;
+    }
 
     var cart = Store.getCart();
     if (!isCheckoutAvailable(cart)) {
@@ -310,6 +319,10 @@
 
   function handleContinueToCheckout() {
     if (checkoutSection.hidden) return;
+    if (!Store.getUser()) {
+      window.location.href = 'login.html?next=cart.html';
+      return;
+    }
     checkoutSection.scrollIntoView({ block: 'start', behavior: 'auto' });
     nameInput.focus();
   }
@@ -483,6 +496,9 @@
     document.getElementById('cart-total').textContent = UI.rupee(subtotal);
     document.getElementById('cart-continue').disabled = !cartValid || hasConfirmation;
     checkoutSection.hidden = !cartValid || hasConfirmation;
+    var signedIn = !!Store.getUser();
+    signInPrompt.hidden = signedIn || hasConfirmation;
+    checkoutForm.hidden = !signedIn || hasConfirmation;
     cartLayout.hidden = hasConfirmation;
     holdBanner.hidden = hasConfirmation;
     confirmationSection.hidden = !hasConfirmation;

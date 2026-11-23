@@ -140,16 +140,25 @@
         return;
       }
 
-      UI.toast(result.user.name + ' signed in');
-
       var next = UI.param('next');
       var safeNext = 'index.html';
       if (next) {
         var cleanNext = String(next).replace(/^[\/]+/, '');
-        var filename = cleanNext.split('?')[0].split('/').pop();
+        var target = new URL(cleanNext, window.location.href);
+        var filename = target.pathname.split('/').pop();
         var allowed = ['index.html','item.html','sell.html','cart.html','orders.html','impact.html','login.html'];
-        if (allowed.indexOf(filename) !== -1) safeNext = cleanNext;
+        if (target.origin === window.location.origin && allowed.indexOf(filename) !== -1) {
+          safeNext = filename + target.search;
+          if (filename === 'item.html' && target.searchParams.get('reserve') === '1') {
+            var listingId = target.searchParams.get('id');
+            var requestedQty = parseInt(target.searchParams.get('qty'), 10) || 1;
+            var added = listingId ? Store.addToCart(listingId, Math.max(1, Math.min(99, requestedQty))) : null;
+            if (added) UI.toast(added.msg);
+            safeNext = 'item.html?id=' + encodeURIComponent(listingId || '');
+          }
+        }
       }
+      UI.toast(result.user.name + ' signed in');
       window.location.replace(safeNext);
     });
   }
