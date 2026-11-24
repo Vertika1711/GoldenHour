@@ -2,59 +2,62 @@
 
 **Surplus food near you, before it's gone**
 
-Golden Hour is a hyperlocal surplus-food marketplace. Restaurants, bakeries, grocery stores and sweet shops list unsold or near-expiry food at a discount, and nearby customers reserve it and pick it up within a few hours. Every item shows a freshness timeline (made, pickup window, good till), and an impact tracker counts the food you rescue.
+Golden Hour is a hyperlocal surplus-food marketplace in Delhi. Restaurants, bakeries, grocery stores and sweet shops list their unsold food at a discount, and nearby customers reserve it and pick it up within a few hours.
 
-This is a student team project: plain HTML, CSS and JavaScript, with mock data saved in the browser. There are no real payments and no real backend. The demo is set in Delhi, with shops near Connaught Place, Hauz Khas, Lajpat Nagar, Karol Bagh and Rajouri Garden.
+**Live site:** https://vertika1711.github.io/GoldenHour/
 
-**Read [CONTRACT.md](CONTRACT.md) before writing any code.**
+## Key features
 
-## View the site locally
+- **Live pickup countdowns** on every listing
+- **Area and location-based browsing**, with filters and search
+- **10-minute bag hold** while you check out
+- **Checkout with pickup codes**
+- **Order tracking**
+- **Freshness timeline** for each item: made, pickup window, good till
+- **Impact tracker**: kg of food rescued, estimated CO₂ saved, money saved, weekly streaks and badges
+- **Seller listing form** with a live preview
+- **Dark mode** and a mobile-first, responsive design
 
-Either:
+## Pages
 
-- **Double-click `index.html`** to open it in your browser, or
-- **Run a simple local server** from the project folder (recommended):
+| Page | What it does |
+|---|---|
+| Browse (`index.html`) | Find food near you, with filters, search and listings closing soon |
+| Item (`item.html`) | Item details, freshness timeline and add to bag |
+| Bag & checkout (`cart.html`) | Review the held bag and place the order |
+| Orders (`orders.html`) | Track orders and see pickup codes |
+| Impact (`impact.html`) | Food rescued, CO₂ estimate, money saved, streaks and badges |
+| Sell (`sell.html`) | List surplus food, with a live preview |
+| Sign in (`login.html`) | Sign in or create an account |
 
-  ```
-  python -m http.server 8000
-  ```
+## Tech
 
-  Then open http://localhost:8000 in your browser. Stop the server with Ctrl + C.
+- Plain HTML, CSS and JavaScript: no frameworks and no build step
+- Mock data and the browser's localStorage simulate the backend
+- Hosted on GitHub Pages
 
-Data is saved in your browser's localStorage, so each browser (and `file://` versus `localhost`) has its own demo data. To start fresh, use "Reset demo data" on the Impact page.
-
-## Files
+## Run locally
 
 ```
-index.html  item.html  cart.html  orders.html  impact.html  sell.html  login.html
-shared/   style.css, data.js, store.js, layout.js   (frozen, Member A only)
-pages/    <page>.css and <page>.js, one pair per page
-CONTRACT.md   shared contract, team rules and implementation notes
+git clone https://github.com/Vertika1711/GoldenHour.git
+cd GoldenHour
 ```
 
-## Who owns what
+Then either open `index.html` in your browser, or run a simple local server and open http://localhost:8000:
 
-| Member | Pages |
-|---|---|
-| A | impact.html |
-| B | index.html |
-| C | item.html, sell.html, login.html |
-| D | cart.html, orders.html |
+```
+python -m http.server 8000
+```
 
-Each member edits only their own `*.html`, `pages/<page>.css` and `pages/<page>.js`. The `shared/` folder, README.md and CONTRACT.md are changed only by Member A.
+## Note
 
-## Branches
+This is a student project. Listings, orders, payments and sign-in are all simulated, and no real money or food changes hands.
 
-| Member | Branch |
-|---|---|
-| A | `feature/impact` |
-| B | `feature/browse` |
-| C | `feature/item-sell-login` |
-| D | `feature/cart-orders` |
+Demo data is saved in your browser; use 'Reset demo data' on the Impact page to start fresh.
 
-Workflow:
+## Team
 
-1. `git checkout main` and `git pull`
-2. `git checkout -b <your branch>` (first time only; afterwards `git checkout <your branch>` and `git merge main`)
-3. Commit your work, then `git push -u origin <your branch>`
-4. Open a pull request into `main` on GitHub
+- Vertika
+- Suhani Gupta
+- Vidushi Awasthi
+- Shreya Pande
