@@ -85,7 +85,7 @@
           <span class="cart-checkout-step">Next step</span>
           <h2 id="cart-checkout-title">Checkout</h2>
           <p class="cart-checkout-intro">Add your details and choose how you would like to pay.</p>
-          <p class="cart-signin-prompt">Already have an account? <a href="login.html?next=cart.html">Sign in to fill this in</a>.</p>
+          <p class="cart-signin-prompt" id="cart-signin-prompt"><strong>Sign in is required to reserve.</strong> Your name and phone will fill in after sign-in. <a href="login.html?next=cart.html">Sign in</a>.</p>
 
           <form id="checkout-form" class="cart-checkout-form" novalidate>
             <div class="field">
@@ -211,6 +211,6 @@
   <script src="shared/data.js"></script>
   <script src="shared/store.js"></script>
   <script src="shared/layout.js"></script>
-  <script src="pages/cart.js"></script>
+  <script src="pages/cart.js?v=sign-in-required"></script>
 </body>
 </html>

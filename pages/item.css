@@ -1,2 +1,356 @@
 /* item.html page styles. Owner: Member C.
    Scope every rule under main.page-item so it never affects other pages. */
+
+/* Golden Hour: Item detail styles. Owner: Member C. */
+
+main.page-item {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-8);
+}
+
+main.page-item .item-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+main.page-item .item-breadcrumb a { font-weight: 700; }
+
+main.page-item .item-detail {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+main.page-item .item-hero {
+  display: grid;
+  padding: 0;
+  overflow: hidden;
+}
+
+main.page-item .item-illustration {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+  background: var(--tint, var(--surface-2));
+}
+
+main.page-item .item-illustration svg {
+  width: min(58%, 240px);
+  height: auto;
+}
+
+main.page-item .item-illustration-badges {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+main.page-item .item-summary {
+  padding: var(--space-5);
+}
+
+main.page-item .item-category,
+main.page-item .eyebrow {
+  margin: 0 0 var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+main.page-item .item-summary h1 {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--fs-2xl);
+}
+
+main.page-item .item-summary h1 .veg-dot { margin-top: 0.22em; }
+
+main.page-item .item-store {
+  display: grid;
+  gap: 2px;
+  margin-bottom: var(--space-2);
+}
+
+main.page-item .item-store span,
+main.page-item .item-store-meta,
+main.page-item .item-description {
+  color: var(--text-muted);
+}
+
+main.page-item .item-store-meta { margin-bottom: var(--space-4); }
+
+main.page-item .item-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+main.page-item .item-price strong { font-size: var(--fs-3xl); }
+main.page-item .item-price s { color: var(--text-muted); }
+main.page-item .item-price span { color: var(--mint); font-weight: 800; }
+
+main.page-item .item-stock { margin-bottom: var(--space-4); }
+main.page-item .item-stock strong { color: var(--urgent-text); }
+
+main.page-item .item-buy {
+  display: grid;
+  gap: var(--space-3);
+}
+
+main.page-item .quantity-field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+main.page-item .quantity-field .label { font-weight: 800; }
+
+main.page-item .quantity-stepper {
+  display: grid;
+  grid-template-columns: 44px minmax(44px, 1fr) 44px;
+  width: 100%;
+  max-width: 220px;
+  min-height: 44px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+main.page-item .quantity-stepper .stepper-btn {
+  border: 0;
+  background: transparent;
+  color: var(--link);
+  cursor: pointer;
+}
+
+main.page-item .quantity-stepper .stepper-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+main.page-item .quantity-stepper output {
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+main.page-item .item-add { width: 100%; }
+
+main.page-item .item-freshness {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-width: 0;
+  padding: var(--space-5);
+}
+
+main.page-item .freshness-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+main.page-item .freshness-heading h2 { margin: 0; }
+
+main.page-item .timeline-wrap {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  margin: var(--space-4) 0 var(--space-6);
+  padding: 0 0 0 60px;
+}
+
+main.page-item .timeline-wrap::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 16px;
+  width: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--border);
+}
+
+main.page-item .freshness-timeline {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main.page-item .timeline-stop {
+  position: relative;
+  min-width: 0;
+}
+
+main.page-item .timeline-stop > div {
+  min-width: 0;
+}
+
+main.page-item .timeline-stop-heading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+main.page-item .timeline-stop-heading strong,
+main.page-item .timeline-time { white-space: nowrap; }
+
+main.page-item .timeline-dot {
+  position: absolute;
+  left: -52px;
+  top: 3px;
+  width: 17px;
+  height: 17px;
+  border: 3px solid var(--surface);
+  border-radius: 50%;
+  background: var(--turmeric);
+  box-shadow: 0 0 0 2px var(--border);
+}
+
+main.page-item .timeline-stop.is-past .timeline-dot { background: var(--mint); }
+
+main.page-item .timeline-time {
+  color: var(--text);
+  font-weight: 700;
+}
+
+main.page-item .timeline-detail {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+main.page-item .timeline-now {
+  position: absolute;
+  left: 16px;
+  z-index: 2;
+  width: 19px;
+  height: 19px;
+  margin-left: -9.5px;
+  margin-top: -5px;
+  border: 3px solid var(--surface);
+  border-radius: 50%;
+  background: var(--text);
+  box-shadow: 0 0 0 2px var(--turmeric);
+}
+
+main.page-item .timeline-now span {
+  position: absolute;
+  left: 13px;
+  top: -3px;
+  padding: 0 3px;
+  border-radius: 4px;
+  background: var(--surface);
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+main.page-item .item-freshbar {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+main.page-item .freshness-note {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+main.page-item .item-details {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-5);
+}
+
+main.page-item .allergen-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+main.page-item .item-no-allergens { border: 1px dashed var(--border); }
+
+main.page-item .item-description { margin: 0; max-width: 70ch; }
+
+main.page-item .more-store {
+  margin-top: var(--space-7);
+}
+
+main.page-item .section-heading { margin-bottom: var(--space-4); }
+main.page-item .section-heading h2 { margin: 0; }
+
+main.page-item .item-no-more {
+  grid-column: 1 / -1;
+  min-height: 160px;
+}
+
+main.page-item .item-missing {
+  min-height: 480px;
+}
+
+main.page-item .item-missing-mark {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto var(--space-4);
+  border-radius: 50%;
+  background: var(--urgent-soft);
+  color: var(--urgent-text);
+  font-family: var(--font-head);
+  font-size: 2.5rem;
+}
+
+@media (min-width: 700px) {
+  main.page-item .item-hero {
+    grid-template-columns: minmax(260px, 0.9fr) minmax(360px, 1.1fr);
+  }
+
+  main.page-item .item-illustration { min-height: 420px; }
+  main.page-item .item-summary { display: flex; flex-direction: column; justify-content: center; }
+  main.page-item .item-buy { grid-template-columns: 220px minmax(180px, 1fr); align-items: end; }
+  main.page-item .item-details { grid-template-columns: 0.8fr 1.2fr; }
+}
+
+@media (min-width: 900px) {
+  main.page-item .item-detail { grid-template-columns: 1fr 1fr; }
+  main.page-item .item-hero { grid-column: 1 / -1; }
+  main.page-item .item-freshness { grid-column: 1 / -1; }
+}
+
+@media (max-width: 699.98px) {
+  main.page-item { padding-inline: var(--space-3); }
+  main.page-item .item-summary { padding: var(--space-4); }
+  main.page-item .item-illustration { min-height: 220px; }
+  main.page-item .freshness-heading { align-items: center; }
+  main.page-item .freshness-heading h2 { font-size: var(--fs-xl); }
+  main.page-item .item-freshness,
+  main.page-item .item-details { padding: var(--space-4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main.page-item * { scroll-behavior: auto; transition: none !important; }
+}

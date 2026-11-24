@@ -1,2 +1,165 @@
-/* sell.html page styles. Owner: Member C.
-   Scope every rule under main.page-sell so it never affects other pages. */
+/* Golden Hour: Sell page styles. Owner: Member C. */
+
+main.page-sell {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-8);
+}
+
+main.page-sell .sell-header { max-width: 700px; margin-bottom: var(--space-6); }
+main.page-sell .sell-header h1 { margin-bottom: var(--space-3); }
+main.page-sell .sell-header .lead { margin: 0; }
+
+main.page-sell .sell-layout {
+  display: grid;
+  align-items: start;
+  gap: var(--space-5);
+}
+
+main.page-sell #sell-form {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+main.page-sell .sell-section {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+main.page-sell .sell-section h2 {
+  margin: 0;
+  font-size: var(--fs-xl);
+}
+
+main.page-sell .sell-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+main.page-sell .field {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+main.page-sell .field label,
+main.page-sell .veg-choice legend {
+  font-weight: 800;
+}
+
+main.page-sell .field-hint,
+main.page-sell .field-error {
+  min-height: 1.3em;
+  font-size: var(--fs-xs);
+}
+
+main.page-sell .field-hint { color: var(--text-muted); }
+main.page-sell .field-error { color: var(--urgent-text); }
+main.page-sell .field.has-error .input { border-color: var(--tomato); }
+
+main.page-sell .sell-section textarea { resize: vertical; min-height: 112px; }
+
+main.page-sell .veg-choice {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+main.page-sell .veg-choice label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  cursor: pointer;
+}
+
+main.page-sell .veg-choice input { width: 20px; height: 20px; accent-color: var(--mint); }
+
+main.page-sell .sell-preview {
+  position: sticky;
+  top: calc(var(--header-h) + var(--space-4));
+  min-width: 0;
+}
+
+main.page-sell .sell-preview h2 { margin-bottom: var(--space-4); }
+main.page-sell #sell-preview-card { max-width: 380px; }
+
+main.page-sell .sell-submit { width: 100%; }
+
+main.page-sell .your-listings { margin-top: var(--space-7); }
+main.page-sell .section-heading { margin-bottom: var(--space-4); }
+main.page-sell .section-heading h2 { margin: 0; }
+
+main.page-sell .your-listings-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+main.page-sell .listing-row {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+main.page-sell .listing-row-main,
+main.page-sell .listing-row-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+main.page-sell .listing-row h3 { margin: 0 0 4px; font-size: var(--fs-lg); }
+main.page-sell .listing-row p { margin: 0; }
+main.page-sell .listing-row-foot { border-top: 1px solid var(--border); padding-top: var(--space-3); }
+main.page-sell .listing-row-foot [data-countdown] { color: var(--urgent-text); }
+
+main.page-sell .sell-empty { min-height: 180px; }
+main.page-sell .sell-empty h3 { margin-bottom: var(--space-2); }
+
+main.page-sell .modal p { color: var(--text-muted); }
+
+main.page-sell .sell-time-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+main.page-sell .sell-time-row {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 700px) {
+  main.page-sell .sell-time-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  main.page-sell .sell-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  main.page-sell .sell-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  main.page-sell .sell-submit { width: auto; justify-self: end; min-width: 180px; }
+}
+
+@media (min-width: 980px) {
+  main.page-sell .sell-layout {
+    grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.7fr);
+  }
+}
+
+@media (max-width: 699.98px) {
+  main.page-sell { padding-inline: var(--space-3); }
+  main.page-sell .sell-section { padding: var(--space-4); }
+  main.page-sell .sell-preview { position: static; }
+  main.page_sell #sell-preview-card { max-width: none; }
+  main.page-sell .listing-row-main,
+  main.page-sell .listing-row-foot { align-items: flex-start; }
+  main.page-sell .listing-row-foot { flex-direction: column; }
+  main.page-sell .listing-row-foot .btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main.page-sell * { transition: none !important; scroll-behavior: auto; }
+}
